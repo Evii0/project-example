@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/data.css">
+        <script src="javascript/data.js"></script>
+        <script src="javascript/upload.js"></script>
+        <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body id="body" class="container-fluid night-off" onload="load()">
+        <!--Prompt and notification-->
+        <div id="background"></div>
+        <div class="prompt" id="prompt">
+            <p id="promptText">Are you sure you want to stop recording <span id="activityPrompt">sleeping</span>?</p>
+            <div class="promptButton promptButtonLeft" onclick="promptResponse('yes')">Yes</div>
+            <div class="promptButton promptButtonRight" onclick="promptResponse('no')">No</div>
+        </div>
+        <div id="notification" class="notification" style="margin-top: -10em;">
+            <img src="images/save.png" class="saveImage">
+            <p id="notifText">1 hour, 2 minutes, and 13 seconds of Feeding saved.</p>
+        </div>
+        <div class="prompt" id="areYouSure">
+            <p id="promptText">Are you sure you want to disconnect?</p>
+            <div class="promptButton promptButtonLeft" onclick="disconnectResponse('yes')">Yes</div>
+            <div class="promptButton promptButtonRight" onclick="disconnectResponse('no')">No</div>
+        </div>
+
+        <!--Unusual length prompt-->
+        <div id="oddPrompt">
+            <p class="info"><b>Activity:</b> <span id="oddActivity">Sleeping</span><br><b>Duration:</b> <span id="oddTime">1 hour, 2 minutes, and 13 seconds</span></p>
+            <p class="oddPromptTitle">Quick Question</p>
+            <p class="oddPromptText">Are the start and end times accurate?</p>
+            <p class="oddPromptText"><span id="activityPrompt">Sleeping</span> normally lasts from <span id="activityStart">30 minutes</span> to <span id="activityEnd">3 hours</span>.</p>
+            
+            <div class="dateContainer">
+                <label for="startTime"><b>Start Time:</b></label>
+                <input type="datetime-local" id="startTime" name="startTime">
+            </div>
+            <div class="dateContainer">
+                <label for="endTime"><b>End Time:</b></label>
+                <input type="datetime-local" id="endTime" name="endTime">
+            </div>
+            <div style="margin-top: 1.5em;">
+                <div class="promptButton promptButtonLeft" onclick="promptResponse('yes')">Save</div>
+                <div class="promptButton promptButtonRight" onclick="promptResponse('no')">Discard</div>
+            </div>
+            
+        </div>
+
+        <!--Back and settings buttons-->
+        <div>
+            <img src="images/back.png" class="topButtons" onclick="areYouSure()" style="left:1em;">
+        </div>
+        <div>
+            <img src="images/settings.png" class="topButtons" style="right:1em;">
+        </div>
+
+        <!--Main content of the page-->
+        <div class="row h-50">
+            <div class="col text-center my-auto" style="padding-top:1em;">
+                <div>
+                    <image src="images/vest.png" style="margin-left:auto; margin-right: auto; width: 25%;">
+                </div>
+            </div>
+            <div class="text text-center">
+                <p id="deviceName">G<span style="color:#f5a2bc;">old</span>ie Device</p>
+                <p class="deviceInfo">Bluetooth Status: <span id="bluetoothStatus" class="connectedStatusText" style="font-weight:bold;">Connected</span></p>             
+                <p class="deviceInfo">Device Status: <span id="deviceStatus" class="disconnectedStatusText" style="font-weight:bold;">Disconnected</span></p> 
+            </div>
+        </div>
+        <div class="row h-25" style="margin-top: -3em; margin-left: 0.08em;">
+            <div class="col">
+                <div id="sleep" class="card" onclick="activity_toggle('sleep')">
+                    <img id="sleepImage" class="activityImage" src="images/sleep.png">
+                    <p class="description">Sleep</p>
+                    <div id="sleepTimerContainer" class="timerContainer">
+                        <p class="timerTitle">Duration:</p>
+                        <p id="sleepTimer" class="timer"></p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div id="walking" class="card" onclick="activity_toggle('walking')">
+                    <img id="walkingImage" class="activityImage" src="images/walking.png">
+                    <p class="description">Walking</p>
+                    <div id="walkingTimerContainer" class="timerContainer">
+                        <p class="timerTitle">Duration:</p>
+                        <p id="walkingTimer" class="timer"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row h-25" style="margin-left: 0.08em;">
+            <div class="col">
+                <div id="sitting" class="card" onclick="activity_toggle('sitting')">
+                    <img id="sittingImage" class="activityImage" src="images/sitting.png">
+                    <p class="description">Sitting</p>
+                    <div id="sittingTimerContainer" class="timerContainer">
+                        <p class="timerTitle">Duration:</p>
+                        <p id="sittingTimer" class="timer"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col" onclick="review()">
+                <div id="dashboard" class="card">
+                    <img id="cryingImage" class="activityImage" src="images/heart.png" style="margin-top:30%; height:50%;">
+                    <!--<p class="description"><span style="color:#A9F09E; font-weight:bold;">Statistics</span></p>-->
+                    <div id="cryingTimerContainer" class="timerContainer">
+                        <p class="timerTitle">Duration:</p>
+                        <p id="cryingTimer" class="timer"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

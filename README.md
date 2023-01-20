@@ -13,7 +13,7 @@ Directory has the html files and folders for everything else, all stylesheets in
 # Main
 Standard java/Android package layout. Folder goldilocksdatacollection has the actual code.<br>
 **MainActivity** is the main class for the app, this starts the **Scanner** to connect to nearby devices. Once a device is found and connected to the **Scanner** class creates an instance of the **Bluetooth** class which handles the communication between the phone and device. When the data is received it's then uploaded using the method in the **Uploader** class.<br>
-(So MainActivity -> Scanner -> Bluetooth -> Uploader)<br>
+(So **MainActivity** -> **Scanner** -> **Bluetooth** -> **Uploader**)<br>
 <br>
-The **Mediator** class is used for passing some information between the main activity and the webappinterface<br>
+The **Mediator** class is used for passing some information between the main activity and the WebAppInterface<br>
 **WebAppInterface** is the interface between the webview and the application itself.
